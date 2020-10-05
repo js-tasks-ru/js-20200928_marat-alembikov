@@ -35,7 +35,7 @@ export function sortStrings(arr, param = "asc") {
       return a.localeCompare(b, "en", { caseFirst: "upper" });
     }
 
-    return a.localeCompare(b);
+    return a.localeCompare(b, "ru");
   });
 }
 
