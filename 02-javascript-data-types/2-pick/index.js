@@ -7,7 +7,7 @@
 export const pick = (obj, ...fields) => {
   return Object.keys(obj).reduce((acc, currentFieldName) => {
     if (fields.includes(currentFieldName)) {
-      acc = { ...acc, [currentFieldName]: obj[currentFieldName] };
+      return { ...acc, [currentFieldName]: obj[currentFieldName] };
     }
 
     return acc;

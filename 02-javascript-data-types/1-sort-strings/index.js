@@ -4,14 +4,23 @@
  * @param {string} [param="asc"] param - the sorting type "asc" or "desc"
  * @returns {string[]}
  */
+
+function compareStrings(firstString, secondString) {
+  return firstString.localeCompare(secondString, ["ru", "en"], {
+    caseFirst: "upper",
+  });
+}
+
 export function sortStrings(arr, param = "asc") {
-  const newArr = [...arr];
+  return [...arr].sort((firstString, secondString) => {
+    switch (param) {
+    case "asc":
+      return compareStrings(firstString, secondString);
 
-  return newArr.sort((a, b) => {
-    if (param === "desc") {
-      [a, b] = [b, a];
+    case "desc":
+      return compareStrings(secondString, firstString);
+
+      // no default
     }
-
-    return a.localeCompare(b, ["ru", "en"], { caseFirst: "upper" });
   });
 }
